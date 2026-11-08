@@ -398,21 +398,41 @@
   </div>
 </section>
 
-<!-- ================= VIDEO TUTORIAL ================= -->
+<!-- ================= AREA PEMBELI (unduh + tutorial terkunci kode) ================= -->
 <section id="tutorial" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap center">
-    <span class="kicker">VIDEO TUTORIAL</span>
-    <h2 style="margin-top:16px">Tonton Dulu — Pemasangan &amp; Cara Pakai</h2>
-    <p class="sub">Dua video langkah demi langkah dengan panah &amp; lingkaran di setiap tombol. Bisa langsung diputar dari HP.</p>
-    <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px">
-      <a class="btn btn-primary" href="tutorial/tutorial-pemasangan.mp4" target="_blank" rel="noreferrer" style="min-width:280px">🎬 Tutorial 1 — Pemasangan (1:36)</a>
-      <a class="btn btn-primary" href="tutorial/tutorial-penggunaan.mp4" target="_blank" rel="noreferrer" style="min-width:280px">🎬 Tutorial 2 — Cara Penggunaan (2:20)</a>
+    <span class="kicker">AREA PEMBELI</span>
+    <h2 style="margin-top:16px">Sudah Transfer? Buka Unduhan &amp; Tutorial</h2>
+    <p class="sub">File unduh &amp; video tutorial tidak dipajang publik. Setelah pembayaran kamu konfirmasi, penjual mengirim <b>kode akses</b> via WhatsApp — masukkan di sini, unduhan + tutorial langsung terbuka.</p>
+
+    <div class="card" style="max-width:560px;margin:28px auto 0;text-align:center">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <input id="kodeAkses" type="text" inputmode="latin" autocomplete="off" spellcheck="false" maxlength="20"
+               placeholder="SS-XXXXX-XXXXX"
+               style="flex:1;min-width:220px;max-width:300px;background:var(--bg2);border:1px solid var(--line2);border-radius:14px;color:var(--text);font-size:17px;font-weight:800;letter-spacing:.12em;padding:14px 16px;text-align:center;text-transform:uppercase;outline:none;font-variant-numeric:tabular-nums">
+        <button id="btnAkses" class="btn btn-primary" style="padding:14px 24px">🔓 Buka</button>
+      </div>
+      <p class="sub" style="margin-top:12px;font-size:12px">Belum punya kode? Lakukan pembayaran dulu di <a href="#bayar" style="color:var(--sky);font-weight:700">pembayaran</a> — kode dikirim otomatis setelah ACC penjual.</p>
     </div>
-    <div style="margin-top:22px">
-      <a class="btn btn-primary" href="https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/StoryStudio-Setup-2.0.1.zip" target="_blank" rel="noreferrer">⬇️ Unduh Aplikasi — Installer Terbaru (.zip 116 MB)</a>
-      <p class="sub" style="margin-top:10px;font-size:12px">Installer berisi aplikasi + panduan instalasi + FFmpeg. Lisensi dikirim terpisah setelah pembayaran (1 kunci = 1 PC).</p>
+
+    <div class="grid g3" style="margin-top:34px;text-align:left">
+      <div class="card">
+        <div class="ico">🔒</div>
+        <h3>Unduh Installer</h3>
+        <p>Aplikasi + panduan instalasi + FFmpeg dalam satu paket zip.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔒</div>
+        <h3>Tutorial 1 — Pemasangan</h3>
+        <p>Video langkah demi langkah dengan panah &amp; lingkaran di setiap tombol.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔒</div>
+        <h3>Tutorial 2 — Cara Penggunaan</h3>
+        <p>Dari proyek baru sampai MP4 siap upload — bisa diputar dari HP.</p>
+      </div>
     </div>
-    <p class="sub" style="margin-top:14px;font-size:12px">Klik video untuk membuka di tab baru &amp; langsung putar. Video juga tersedia offline di dalam paket aplikasi.</p>
+    <p class="sub" style="margin-top:16px;font-size:12px">Lisensi dikirim terpisah setelah pembayaran (1 kunci = 1 PC). Video juga tersedia offline di dalam paket aplikasi.</p>
   </div>
 </section>
 
@@ -601,6 +621,16 @@
   tick();
   setInterval(tick, 1000);
 })();
+
+/* ---------- Area Pembeli: buka akses.html?kode= ---------- */
+document.getElementById('btnAkses').addEventListener('click', function () {
+  var norm = document.getElementById('kodeAkses').value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (norm.length < 6) { alert('Masukkan kode akses dari penjual (format SS-XXXXX-XXXXX).'); return; }
+  location.href = 'akses.html?kode=' + norm;
+});
+document.getElementById('kodeAkses').addEventListener('keydown', function (ev) {
+  if (ev.key === 'Enter') document.getElementById('btnAkses').click();
+});
 
 /* ---------- Salin nomor rekening ---------- */
 document.getElementById('copyBtn').addEventListener('click', function () {
