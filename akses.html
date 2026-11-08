@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Story Studio — Area Pembeli</title>
+<meta name="description" content="Area pembeli Story Studio: unduh aplikasi & video tutorial dengan kode akses.">
+<style>
+  :root{
+    --bg:#070b12; --bg2:#0b1220; --card:#0e1626; --card2:#111c30;
+    --line:#1e2a44; --line2:#27365a;
+    --text:#e8eefc; --muted:#94a3c0; --dim:#64748f;
+    --sky:#38bdf8; --cyan:#22d3ee; --green:#34d399; --amber:#fbbf24; --rose:#fb7185;
+    --grad:linear-gradient(90deg,#38bdf8,#22d3ee);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.65; min-height:100vh;
+    background-image:radial-gradient(900px 420px at 15% -10%, rgba(56,189,248,.14), transparent 60%),
+      radial-gradient(800px 420px at 95% 0%, rgba(34,211,238,.10), transparent 55%);
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--sky);background:rgba(56,189,248,.08);
+    border:1px solid rgba(56,189,248,.3);
+    padding:6px 14px;border-radius:999px;
+  }
+  h1{font-size:clamp(26px,4vw,40px);line-height:1.15;font-weight:900;letter-spacing:-.02em}
+  h2{font-size:clamp(20px,3vw,26px);line-height:1.2;font-weight:900}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:16px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px 30px;border-radius:14px;border:none;cursor:pointer;
+    font-size:15px;font-weight:800;text-decoration:none;transition:.2s;
+  }
+  .btn-primary{background:var(--grad);color:#04121e;box-shadow:0 10px 34px rgba(34,211,238,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(34,211,238,.5)}
+  .btn-ghost{background:rgba(148,163,192,.08);color:var(--text);border:1px solid var(--line2)}
+  .btn-ghost:hover{background:rgba(148,163,192,.14)}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:28px;transition:.2s;
+  }
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+  .brand{font-weight:900;font-size:17px;letter-spacing:.02em;text-decoration:none;color:var(--text)}
+  .brand span{color:var(--sky)}
+  .locked-badge{font-size:12px;color:var(--amber);border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.07);padding:5px 12px;border-radius:999px;font-weight:700}
+  .hero{padding:28px 0 12px}
+  .hero .sub{margin:14px 0 0}
+  .kode-box{margin:26px 0 0}
+  .kode-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+  .kode-input{
+    flex:1;min-width:240px;max-width:380px;
+    background:var(--bg2);border:1px solid var(--line2);border-radius:14px;
+    color:var(--text);font-size:18px;font-weight:800;letter-spacing:.14em;
+    padding:15px 18px;text-align:center;text-transform:uppercase;outline:none;
+    font-variant-numeric:tabular-nums;
+  }
+  .kode-input:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(56,189,248,.18)}
+  .kode-input::placeholder{color:var(--dim);letter-spacing:.08em;font-weight:600}
+  .msg{margin-top:16px;font-size:14px;border-radius:12px;padding:12px 16px;display:none;text-align:left}
+  .msg.err{display:block;background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.35);color:var(--rose)}
+  .msg.info{display:block;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.3);color:var(--sky)}
+  .msg a{color:var(--sky);font-weight:700}
+  #areaKode{padding:56px 0 72px}
+  #areaIsi{padding:24px 0 72px;display:none}
+  .sesi-chip{display:inline-flex;gap:10px;align-items:center;font-size:13px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:22px}
+  .sesi-chip b{color:var(--green);letter-spacing:.1em;font-variant-numeric:tabular-nums}
+  .sesi-chip button{background:none;border:none;color:var(--dim);cursor:pointer;font-size:12px;text-decoration:underline}
+  .unduh-card{border:1px solid rgba(52,211,153,.4);background:linear-gradient(180deg,rgba(52,211,153,.06),var(--card));}
+  .unduh-card h2{display:flex;align-items:center;gap:10px}
+  .file-line{color:var(--muted);font-size:14px;margin-top:8px}
+  .tutor-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+  @media(max-width:760px){.tutor-grid{grid-template-columns:1fr}}
+  .video-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .video-card video{width:100%;aspect-ratio:16/9;border-radius:12px;background:#000;display:block}
+  .video-card h3{font-size:15px;margin-top:12px}
+  .video-card a{color:var(--sky);font-size:13px;font-weight:700;text-decoration:none}
+  .steps{margin-top:14px;text-align:left;color:var(--muted);font-size:14px;padding-left:20px}
+  .steps li{margin:6px 0}
+  .steps b{color:var(--text)}
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--dim);font-size:13px}
+  footer a{color:var(--sky);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="index.html">Story<span>Studio</span> · Area Pembeli</a>
+    <span class="locked-badge" id="badge">🔒 TERKUNCI</span>
+  </div>
+
+  <!-- ================= FORM KODE ================= -->
+  <section id="areaKode">
+    <div class="hero" style="text-align:center">
+      <span class="kicker">AREA PEMBELI</span>
+      <h1 style="margin-top:18px">Unduhan &amp; Video Tutorial <span class="grad">Anda</span></h1>
+      <p class="sub" style="margin:14px auto 0;max-width:600px">
+        File unduh tidak dipajang di halaman publik. Masukkan <b>kode akses</b> yang
+        dikirim penjual via WhatsApp setelah pembayaran dikonfirmasi.
+      </p>
+    </div>
+    <div class="kode-box card" style="text-align:center;margin-top:8px">
+      <div class="kode-row">
+        <input id="kode" class="kode-input" type="text" inputmode="latin"
+               placeholder="SS-XXXXX-XXXXX" autocomplete="off" spellcheck="false" maxlength="20">
+        <button id="btnBuka" class="btn btn-primary">🔓 Buka Area Pembeli</button>
+      </div>
+      <div id="pesan" class="msg"></div>
+    </div>
+  </section>
+
+  <!-- ================= AREA PEMBELI (terbuka setelah validasi) ================= -->
+  <section id="areaIsi">
+    <div class="sesi-chip">Kode aktif: <b id="sesiKode"></b>
+      <button id="btnLupa" type="button">lupakan di perangkat ini</button>
+    </div>
+
+    <div class="card unduh-card">
+      <h2>⬇️ Unduh Aplikasi</h2>
+      <div class="btn" style="margin-top:16px;padding:0">
+        <a id="linkInstaller" class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+          Unduh Installer (.zip)
+        </a>
+      </div>
+      <p class="file-line" id="installerLabel"></p>
+      <ol class="steps">
+        <li>Ekstrak zip → jalankan <b>start_studio.bat</b> (butuh Python 3.11+; FFmpeg sudah ikut di dalam paket).</li>
+        <li>Buka <b>http://localhost:8765</b> di browser.</li>
+        <li>Klik <b>Aktivasi_Lisensi.bat</b> → salin Kode Mesin → kirim ke penjual → tempel file lisensi yang diterima.</li>
+      </ol>
+    </div>
+
+    <h2 style="margin:34px 0 4px">🎬 Video Tutorial</h2>
+    <p class="sub" style="font-size:14px">Panah &amp; lingkaran menandai setiap tombol. Bisa diputar dari HP.</p>
+    <div class="tutor-grid">
+      <div class="video-card">
+        <video id="vidPemasangan" controls playsinline preload="metadata"></video>
+        <h3>1 — Pemasangan <span id="lblPemasangan"></span></h3>
+        <a id="lnkPemasangan" href="#" target="_blank" rel="noreferrer">Buka di tab baru ↗</a>
+      </div>
+      <div class="video-card">
+        <video id="vidPenggunaan" controls playsinline preload="metadata"></video>
+        <h3>2 — Cara Penggunaan <span id="lblPenggunaan"></span></h3>
+        <a id="lnkPenggunaan" href="#" target="_blank" rel="noreferrer">Buka di tab baru ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Ada masalah? Hubungi penjual via
+    <a id="waSupport" href="#" target="_blank" rel="noreferrer">WhatsApp</a> ·
+    <a href="index.html">← kembali ke halaman utama</a>
+  </footer>
+</div>
+
+<script>
+/* ================================================================
+   AREA PEMBELI — validasi kode akses (statis, tanpa server).
+   Kontrak dengan kelola_akses.py (WAJIB SAMA - dites bersama):
+   - normalisasi: uppercase + buang semua non-[A-Z0-9]
+   - penyimpanan: SHA-256 hex dari kode ternormalisasi (utf-8)
+   ================================================================ */
+(function () {
+  'use strict';
+
+  var MANIFEST_URL = 'akses.json';
+  var LS_KEY = 'ss_akses_kode';
+  var WA_NUM = '6289634589191';
+
+  /* ---------- fungsi murni ---------- */
+  function normKode(raw) {
+    return String(raw || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  }
+  function sha256hex(text) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text))
+      .then(function (buf) {
+        var out = '';
+        new Uint8Array(buf).forEach(function (b) {
+          out += ('0' + b.toString(16)).slice(-2);
+        });
+        return out;
+      });
+  }
+  function findGrant(manifest, hashHex) {
+    var grants = (manifest && Array.isArray(manifest.grants)) ? manifest.grants : [];
+    return grants.find(function (g) { return g && g.h === hashHex; }) || null;
+  }
+  function linkOf(manifest, key) {
+    var links = (manifest && manifest.links) || {};
+    var e = links[key];
+    return (e && typeof e.url === 'string' && e.url) ? e : null;
+  }
+
+  /* ---------- DOM ---------- */
+  var $kode = document.getElementById('kode');
+  var $btn = document.getElementById('btnBuka');
+  var $pesan = document.getElementById('pesan');
+  var $areaKode = document.getElementById('areaKode');
+  var $areaIsi = document.getElementById('areaIsi');
+  var $badge = document.getElementById('badge');
+
+  function pesan(tipe, html) {
+    $pesan.className = 'msg ' + tipe;
+    $pesan.innerHTML = html;
+  }
+  function pesanKosong() { $pesan.className = 'msg'; $pesan.innerHTML = ''; }
+
+  var waSupport = document.getElementById('waSupport');
+  waSupport.href = 'https://wa.me/' + WA_NUM +
+    '?text=' + encodeURIComponent('Halo, saya pembeli Story Studio. Kode akses saya bermasalah.');
+
+  function bukaArea(manifest, kodeNorm) {
+    document.getElementById('sesiKode').textContent = kodeNorm;
+    var ins = linkOf(manifest, 'installer');
+    var aIns = document.getElementById('linkInstaller');
+    if (ins) {
+      aIns.href = ins.url;
+      document.getElementById('installerLabel').textContent =
+        ins.label || 'Installer + panduan instalasi + FFmpeg di dalam paket.';
+    } else {
+      aIns.removeAttribute('href');
+      aIns.textContent = 'Link installer belum diatur';
+      document.getElementById('installerLabel').textContent =
+        'Hubungi penjual — manifest belum memuat link installer.';
+    }
+    pasangVideo('Pemasangan', linkOf(manifest, 'tutorial_pemasangan'));
+    pasangVideo('Penggunaan', linkOf(manifest, 'tutorial_penggunaan'));
+    $areaKode.style.display = 'none';
+    $areaIsi.style.display = 'block';
+    $badge.textContent = '🔓 AKSES AKTIF';
+    $badge.style.color = 'var(--green)';
+    $badge.style.borderColor = 'rgba(52,211,153,.4)';
+    $badge.style.background = 'rgba(52,211,153,.07)';
+  }
+
+  function pasangVideo(nama, entry) {
+    var vid = document.getElementById('vid' + nama);
+    var lnk = document.getElementById('lnk' + nama);
+    var lbl = document.getElementById('lbl' + nama);
+    if (!entry) {
+      if (lbl) lbl.textContent = ' — link belum diatur';
+      if (lnk) lnk.style.display = 'none';
+      return;
+    }
+    vid.src = entry.url;
+    lnk.href = entry.url;
+    if (lbl) lbl.textContent = ''; // judul kartu sudah menjelaskan video
+  }
+
+  function simpan(kodeNorm) {
+    try { localStorage.setItem(LS_KEY, kodeNorm); } catch (e) {}
+  }
+
+  function validasi(rawKode, dariSesi) {
+    var norm = normKode(rawKode);
+    if (norm.length < 6) {
+      pesan('err', 'Kode terlalu pendek. Formatnya seperti <b>SS-XXXXX-XXXXX</b> — lihat pesan WhatsApp dari penjual.');
+      return;
+    }
+    pesan('info', 'Memeriksa kode…');
+    fetch(MANIFEST_URL + '?v=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('manifest ' + r.status);
+        return r.json();
+      })
+      .then(function (manifest) {
+        return sha256hex(norm).then(function (h) {
+          var grant = findGrant(manifest, h);
+          if (!grant) {
+            try { localStorage.removeItem(LS_KEY); } catch (e) {}
+            pesan('err',
+              'Kode tidak dikenal atau sudah dicabut. Periksa lagi pesan WhatsApp dari penjual, ' +
+              'atau <a href="https://wa.me/' + WA_NUM + '?text=' +
+              encodeURIComponent('Halo, kode akses Story Studio saya tidak bisa dibuka: ' + norm) +
+              '" target="_blank" rel="noreferrer">hubungi penjual di WhatsApp</a>.');
+            return;
+          }
+          simpan(norm);
+          pesanKosong();
+          bukaArea(manifest, norm);
+          window.scrollTo({ top: 0 });
+        });
+      })
+      .catch(function (e) {
+        pesan('err', 'Gagal memeriksa kode (koneksi / data akses belum terbit). Coba lagi beberapa saat — ' +
+          'atau hubungi penjual. <span style="color:var(--dim)">(' + e.message + ')</span>');
+      });
+  }
+
+  $btn.addEventListener('click', function () { pesanKosong(); validasi($kode.value, false); });
+  $kode.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter') { pesanKosong(); validasi($kode.value, false); }
+  });
+  document.getElementById('btnLupa').addEventListener('click', function () {
+    try { localStorage.removeItem(LS_KEY); } catch (e) {}
+    location.reload();
+  });
+
+  /* ---------- boot: ?kode= di URL > sesi tersimpan ---------- */
+  (function boot() {
+    var q = new URLSearchParams(location.search);
+    var dariUrl = q.get('kode');
+    if (dariUrl) {
+      $kode.value = dariUrl;
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      validasi(dariUrl, false);
+      return;
+    }
+    var tersimpan = '';
+    try { tersimpan = localStorage.getItem(LS_KEY) || ''; } catch (e) {}
+    if (tersimpan) { $kode.value = tersimpan; validasi(tersimpan, true); }
+  }());
+
+  /* diekspos untuk pemeriksaan otomatis (konsistensi dengan kelola_akses.py) */
+  window.__ssAkses = { normKode: normKode, sha256hex: sha256hex, findGrant: findGrant, linkOf: linkOf };
+}());
+</script>
+</body>
+</html>
