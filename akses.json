@@ -1,5 +1,5 @@
 {
-  "rev": 4,
+  "rev": 5,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/StoryStudio-Setup-2.0.1.zip",
@@ -14,5 +14,12 @@
       "label": "Video Tutorial 2 — Cara Penggunaan"
     }
   },
-  "grants": []
+  "grants": [
+    {
+      "h": "bd80fd68c40ef9c631799582f87399c50c74d12c6e0ed34c64c27be0fd8a94da",
+      "nama": "UJI GERBANG (hapus)",
+      "dibuat": "2026-11-08",
+      "catatan": "kode tes agent 2026-11-08"
+    }
+  ]
 }
