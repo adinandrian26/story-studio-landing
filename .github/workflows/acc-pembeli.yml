@@ -1,0 +1,51 @@
+name: ACC Pembeli
+
+# ACC pembeli dari HP: buka github.com/adinandrian26/story-studio-landing/actions
+# -> pilih "ACC Pembeli" -> Run workflow -> isi nama (+ WA pembeli) -> Run.
+# Kode + link dikirim via WhatsApp (Fonnte) ke pembeli & salinan ke penjual.
+# Kode mentah tidak pernah muncul di log (repo publik).
+
+on:
+  workflow_dispatch:
+    inputs:
+      nama:
+        description: "Nama pembeli (wajib)"
+        required: true
+        type: string
+      wa_pembeli:
+        description: "No WA pembeli 628… (kosongkan bila nomornya belum ada)"
+        required: false
+        type: string
+      catatan:
+        description: "Catatan (mis. transfer BCA 8 Nov)"
+        required: false
+        type: string
+
+concurrency:
+  group: acc-pembeli
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  acc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil repo
+        uses: actions/checkout@v4
+
+      - name: Siapkan Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Buat kode akses + kirim WA
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NAMA: ${{ inputs.nama }}
+          WA_PEMBELI: ${{ inputs.wa_pembeli }}
+          CATATAN: ${{ inputs.catatan }}
+          FONNTE_TOKEN: ${{ secrets.FONNTE_TOKEN }}
+          WA_PENJUAL: "6289634589191"
+        run: python .github/akses_tools/acc_runner.py
