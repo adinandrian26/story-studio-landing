@@ -516,28 +516,46 @@
     <span class="kicker">CARA ORDER</span>
     <h2 style="margin-top:16px">Transfer — Langsung Proses</h2>
 
-    <div class="pay-card reveal" style="text-align:left">
-      <div class="bank">
-        <div>
-          <div class="bname">BCA</div>
-          <div class="bnum">2991668871</div>
-          <div class="bown">a.n. SARDIN</div>
+      <div class="pay-card reveal" style="text-align:left">
+        <div class="bank" id="qrisRow">
+          <div style="background:#fff;border-radius:12px;padding:10px;flex:none;line-height:0">
+            <img src="qris.png" alt="QRIS Story Studio" width="150" height="150" loading="lazy"
+                 style="display:block;image-rendering:pixelated"
+                 onerror="document.getElementById('qrisRow').style.display='none'">
+          </div>
+          <div style="flex:1;min-width:200px">
+            <div class="bname">🔹 ATAU SCAN QRIS — TANPA BIAYA</div>
+            <div style="font-size:14px;color:var(--muted);margin-top:6px">
+              Scan pakai <b style="color:var(--text)">GoPay, DANA, OVO, ShopeePay, m-banking apa pun</b> —
+              isi nominal <b style="color:var(--text)">tepat Rp 170.000</b>.
+            </div>
+            <div style="font-size:12px;color:var(--dim);margin-top:6px">
+              Uang langsung masuk ke penjual (QRIS Merchant, 0% biaya). Setelah bayar, konfirmasi via WhatsApp di bawah supaya langsung diproses.
+            </div>
+          </div>
         </div>
-        <button class="copy-btn" id="copyBtn" data-num="2991668871">📋 Salin No. Rekening</button>
-      </div>
 
-      <ul class="pay-steps">
-        <li><b>Transfer Rp 170.000</b> ke rekening BCA di atas (sesuai jumlah promo — harga normal Rp 399.000).</li>
-        <li><b>Tekan tombol WhatsApp hijau di bawah</b> dan kirim bukti transfernya (pesan sudah tersiap otomatis).</li>
-        <li><b>Terima paket</b>: aplikasi + ekstensi + panduan instalasi &amp; pemakaian.</li>
-        <li><b>Ikuti panduan</b> — 10 menit pertama kamu sudah bisa menjalankan video pertamamu.</li>
-      </ul>
+        <div class="bank">
+          <div>
+            <div class="bname">BCA</div>
+            <div class="bnum">2991668871</div>
+            <div class="bown">a.n. SARDIN</div>
+          </div>
+          <button class="copy-btn" id="copyBtn" data-num="2991668871">📋 Salin No. Rekening</button>
+        </div>
 
-      <a class="btn wa-btn" id="waBtn"
-         href="https://wa.me/6289634589191?text=Halo%2C%20saya%20sudah%20transfer%20Rp%20170.000%20untuk%20Story%20Studio%20ke%20BCA%202991668871%20a.n.%20Sardin.%20Berikut%20bukti%20transfernya."
-         target="_blank" rel="noopener">
-        💬 Konfirmasi Pembayaran via WhatsApp — 0896-3458-9191
-      </a>
+        <ul class="pay-steps">
+          <li><b>Bayar Rp 170.000</b> — scan QRIS di atas (GoPay/DANA/OVO/m-banking apa pun) atau transfer ke BCA (sesuai jumlah promo — harga normal Rp 399.000).</li>
+          <li><b>Tekan tombol WhatsApp hijau di bawah</b> dan kirim bukti pembayarannya (pesan sudah tersiap otomatis).</li>
+          <li><b>Terima paket</b>: aplikasi + ekstensi + panduan instalasi &amp; pemakaian.</li>
+          <li><b>Ikuti panduan</b> — 10 menit pertama kamu sudah bisa menjalankan video pertamamu.</li>
+        </ul>
+
+        <a class="btn wa-btn" id="waBtn"
+           href="https://wa.me/6289634589191?text=Halo%2C%20saya%20sudah%20bayar%20Rp%20170.000%20untuk%20Story%20Studio%20(via%20QRIS%2Ftransfer).%20Berikut%20bukti%20pembayarannya."
+           target="_blank" rel="noopener">
+          💬 Konfirmasi Pembayaran via WhatsApp — 0896-3458-9191
+        </a>
 
       <div class="countdown-box" style="width:100%;justify-content:center;margin-top:20px">
         <span class="label">⏳ Slot promo berakhir dalam</span>
