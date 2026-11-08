@@ -151,6 +151,23 @@
         <a id="lnkPenggunaan" href="#" target="_blank" rel="noreferrer">Buka di tab baru ↗</a>
       </div>
     </div>
+
+    <div id="contohWrap">
+      <h2 style="margin:34px 0 4px">✨ Contoh Hasil Generate</h2>
+      <p class="sub" style="font-size:14px">Video asli buatan Story Studio — yang pertama lewat <b>Mode Autopilot</b>, yang kedua lewat <b>Mode Sutradara</b>.</p>
+      <div class="tutor-grid">
+        <div class="video-card" id="cardContohAutopilot">
+          <video id="vidContohAutopilot" controls playsinline preload="metadata"></video>
+          <h3>Hasil Mode Autopilot</h3>
+          <a id="lnkContohAutopilot" href="#" target="_blank" rel="noreferrer">Buka di tab baru ↗</a>
+        </div>
+        <div class="video-card" id="cardContohSutradara">
+          <video id="vidContohSutradara" controls playsinline preload="metadata"></video>
+          <h3>Hasil Mode Sutradara</h3>
+          <a id="lnkContohSutradara" href="#" target="_blank" rel="noreferrer">Buka di tab baru ↗</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
@@ -232,6 +249,17 @@
     }
     pasangVideo('Pemasangan', linkOf(manifest, 'tutorial_pemasangan'));
     pasangVideo('Penggunaan', linkOf(manifest, 'tutorial_penggunaan'));
+    var contohPairs = [['ContohAutopilot', 'contoh_autopilot'], ['ContohSutradara', 'contoh_sutradara']];
+    var adaContoh = false;
+    contohPairs.forEach(function (p) {
+      var entry = linkOf(manifest, p[1]);
+      if (entry) adaContoh = true;
+      pasangVideo(p[0], entry);
+      var card = document.getElementById('card' + p[0]);
+      if (card) card.style.display = entry ? '' : 'none';
+    });
+    var cWrap = document.getElementById('contohWrap');
+    if (cWrap) cWrap.style.display = adaContoh ? '' : 'none';
     $areaKode.style.display = 'none';
     $areaIsi.style.display = 'block';
     $badge.textContent = '🔓 AKSES AKTIF';
