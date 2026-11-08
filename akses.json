@@ -1,5 +1,5 @@
 {
-  "rev": 9,
+  "rev": 10,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/StoryStudio-Setup-2.0.1.zip",
@@ -22,12 +22,5 @@
       "label": "Contoh Hasil — Mode Sutradara"
     }
   },
-  "grants": [
-    {
-      "h": "9fac2b650332c370525f0dfa0ee96dd51fa1a0cd5191a0e404af66d904b9b3d2",
-      "nama": "UJI CONTOH (hapus)",
-      "dibuat": "2026-11-08",
-      "catatan": "verifikasi contoh hasil 2026-11-08"
-    }
-  ]
+  "grants": []
 }
