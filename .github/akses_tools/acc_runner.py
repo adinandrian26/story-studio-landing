@@ -19,7 +19,11 @@ import sys
 import urllib.parse
 import urllib.request
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
+# kelola_akses.py dipublish di ROOT repo Pages; cwd checkout = root repo.
+_REPO_ROOT = os.path.dirname(os.path.dirname(_TOOLS_DIR))
+sys.path.insert(0, _TOOLS_DIR)
+sys.path.insert(0, _REPO_ROOT)
 import kelola_akses as ka  # noqa: E402
 
 FONNTE_URL = "https://api.fonnte.com/send"
