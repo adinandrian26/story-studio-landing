@@ -1,0 +1,18 @@
+{
+  "rev": 4,
+  "links": {
+    "installer": {
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/StoryStudio-Setup-2.0.1.zip",
+      "label": "StoryStudio-Setup-2.0.1.zip"
+    },
+    "tutorial_pemasangan": {
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/tutorial-pemasangan.mp4",
+      "label": "Video Tutorial 1 — Pemasangan"
+    },
+    "tutorial_penggunaan": {
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/tutorial-penggunaan.mp4",
+      "label": "Video Tutorial 2 — Cara Penggunaan"
+    }
+  },
+  "grants": []
+}
