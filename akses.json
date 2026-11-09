@@ -1,5 +1,5 @@
 {
-  "rev": 11,
+  "rev": 12,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/StoryStudio-Setup-2.0.1.zip",
@@ -28,6 +28,12 @@
       "nama": "UJI FONNTE (hapus)",
       "dibuat": "2026-11-08",
       "catatan": "verifikasi ACC dari HP 2026-11-08 (coba 2)"
+    },
+    {
+      "h": "d33bf14ba496b3b8ee7a9d11b8d8023e93825f205254868a5115160183f7ff76",
+      "nama": "Penjual - Installer Terbaru",
+      "dibuat": "2026-11-09",
+      "catatan": "Installer 2.0.1 telah ditimpa 9 November 2026: perbaikan startup BAT dan aktivasi pembeli. Kirim tautan Area Pembeli ke WA penjual 6289634589191."
     }
   ]
 }
