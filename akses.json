@@ -1,5 +1,5 @@
 {
-  "rev": 14,
+  "rev": 15,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/StoryStudio-Setup-2.0.1.zip?v=20261109-py312-r1"
@@ -33,6 +33,12 @@
       "nama": "Penjual - Installer Terbaru",
       "dibuat": "2026-11-09",
       "catatan": "Installer 2.0.1 telah ditimpa 9 November 2026: perbaikan startup BAT dan aktivasi pembeli. Kirim tautan Area Pembeli ke WA penjual 6289634589191."
+    },
+    {
+      "h": "ae33903e85c24d88a34480c6af34ec3b8a7450e1e45c246d7f1850ad2795682d",
+      "nama": "Penjual - Perbaikan PyYAML",
+      "dibuat": "2026-11-09",
+      "catatan": "Perbaikan PyYAML 9 November 2026: installer terbaru memilih Python 3.11/3.12 x64, pip binary-only, pemulihan venv lama. Semua dependensi teruji pada Python 3.12.13 bersih. Kirim link dan instruksi Python 3.12 ke WA penjual."
     }
   ]
 }
