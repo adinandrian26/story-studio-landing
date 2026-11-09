@@ -1,0 +1,107 @@
+name: Kirim Tautan Rilis ke Penjual
+run-name: Kirim tautan Story Studio v2.0.2 ke WhatsApp penjual
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: wa-tautan-penjual
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  kirim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil repo
+        uses: actions/checkout@v4
+
+      - name: Siapkan Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Kirim tautan v2.0.2 dan periksa status WhatsApp
+        env:
+          FONNTE_TOKEN: ${{ secrets.FONNTE_TOKEN }}
+          WA_PENJUAL: "6289634589191"
+        run: |
+          import json
+          import os
+          from pathlib import Path
+          import sys
+          import time
+          import urllib.parse
+          import urllib.request
+
+          sys.path.insert(0, str(Path('.github/akses_tools').resolve()))
+          from acc_runner import fonnte_send
+
+          token = os.environ.get('FONNTE_TOKEN', '')
+          if not token:
+              sys.exit('FONNTE_TOKEN belum tersedia.')
+          target = os.environ['WA_PENJUAL']
+          base = 'https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.2/'
+          message = (
+              '*STORY STUDIO v2.0.2 — PERBAIKAN SUDAH ONLINE*\n\n'
+              '*Untuk pembeli yang mengalami "Application not found":*\n'
+              + base + 'StoryStudio-Perbaikan-Startup-2.0.2.zip\n\n'
+              'Cara memasang:\n'
+              '1. Tutup jendela Story Studio.\n'
+              '2. Ekstrak SELURUH isi ZIP perbaikan ke folder aplikasi lama.\n'
+              '3. Izinkan penimpaan file.\n'
+              '4. Jalankan start_studio.bat.\n\n'
+              'Python 3.12 64-bit dipasang otomatis jika diperlukan. '
+              'Browser dibuka setelah server siap. Proyek dan lisensi tetap tersimpan.\n\n'
+              '*Installer lengkap untuk instalasi baru (148 MB):*\n'
+              + base + 'StoryStudio-Setup-2.0.2.zip\n\n'
+              '*Aplikasi yang sudah berjalan:* klik tombol Update untuk mendapatkan v2.0.2.\n'
+              'Paket Update (33 MB):\n'
+              + base + 'StoryStudio-Update-2.0.2.zip\n\n'
+              '*Area Pembeli + tutorial (gunakan kode akses yang sudah diterima):*\n'
+              'https://bikinexplainer.online/akses.html\n\n'
+              'Ketiga unduhan sudah diverifikasi dan checksum cocok. '
+              'Silakan teruskan tautan ZIP perbaikan beserta langkah di atas ke pembeli yang terkendala.'
+          )
+          ok, body = fonnte_send(token, target, message)
+          if not ok:
+              sys.exit('Pengiriman ditolak Fonnte. Periksa koneksi perangkat atau kuota di dashboard Fonnte.')
+          response = json.loads(body)
+          ids = response.get('id', [])
+          if not isinstance(ids, list):
+              ids = [ids]
+          ids = [str(value) for value in ids if value is not None and str(value)]
+          print('Fonnte menerima pesan untuk WhatsApp penjual.')
+          print('Message IDs: ' + ', '.join(ids))
+          final_status = str(response.get('process', 'accepted')).lower()
+          for attempt in range(18):
+              if not ids:
+                  break
+              time.sleep(5)
+              try:
+                  request = urllib.request.Request(
+                      'https://api.fonnte.com/status',
+                      data=urllib.parse.urlencode({'id': ids[0]}).encode('utf-8'),
+                      headers={'Authorization': token},
+                  )
+                  with urllib.request.urlopen(request, timeout=20) as result:
+                      status = json.load(result)
+                  if not status.get('status') or not status.get('message_status'):
+                      print('Pemeriksaan status belum tersedia; pesan sudah diterima Fonnte.')
+                      break
+                  final_status = str(status['message_status']).lower()
+                  print('Message status: ' + final_status)
+                  if final_status in {'sent', 'delivered', 'read', 'invalid', 'expired', 'failed'}:
+                      break
+              except Exception:
+                  print('Status belum dapat diperiksa; pengiriman tidak diulang untuk mencegah pesan ganda.')
+                  break
+          summary = f'Pesan tautan Story Studio v2.0.2 untuk WhatsApp penjual. Status: **{final_status}**.\n'
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
+              output.write(summary)
+          print('FINAL_STATUS=' + final_status)
+          if final_status in {'invalid', 'expired', 'failed'}:
+              sys.exit('Pesan gagal dikirim; periksa dashboard Fonnte.')
+        shell: python
