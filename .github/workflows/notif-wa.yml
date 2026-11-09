@@ -1,0 +1,60 @@
+name: Notifikasi WhatsApp Penjual
+run-name: Notifikasi WhatsApp — ${{ inputs.judul }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      judul:
+        description: "Judul singkat (tampil di daftar run)"
+        required: false
+        type: string
+        default: "Notifikasi"
+      pesan:
+        description: "Isi pesan WhatsApp (markdown WA, *bold*)"
+        required: true
+        type: string
+
+concurrency:
+  group: wa-notifikasi-penjual
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  kirim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil repo
+        uses: actions/checkout@v4
+
+      - name: Siapkan Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Kirim pesan via Fonnte
+        env:
+          FONNTE_TOKEN: ${{ secrets.FONNTE_TOKEN }}
+          PESAN: ${{ inputs.pesan }}
+        run: |
+          import os
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path('.github/akses_tools').resolve()))
+          from acc_runner import fonnte_send
+
+          token = os.environ.get('FONNTE_TOKEN', '')
+          if not token:
+              sys.exit('FONNTE_TOKEN belum tersedia.')
+          pesan = os.environ.get('PESAN', '').strip()
+          if not pesan:
+              sys.exit('Pesan kosong.')
+          ok, body = fonnte_send(token, '6289634589191', pesan)
+          print(body)
+          if not ok:
+              sys.exit('Pengiriman ditolak Fonnte. Periksa koneksi perangkat di dashboard Fonnte.')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
+              output.write('Notifikasi terkirim ke WhatsApp penjual.\n')
+        shell: python
