@@ -196,6 +196,10 @@ def build_buyer_message(kode: str) -> str:
         "Di halaman itu ada:\n"
         "\u2022 Unduh aplikasi (installer .zip + panduan)\n"
         "\u2022 2 video tutorial: pemasangan & cara penggunaan\n\n"
+        "Pasang Python 3.12.10 64-bit, centang Add python.exe to PATH:\n"
+        "https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe\n"
+        "Python 3.11 64-bit juga didukung; Python 3.15 belum didukung.\n"
+        "Ekstrak zip, lalu jalankan start_studio.bat.\n\n"
         "Setelah terinstall: buka Aktivasi_Lisensi.bat, salin Kode Mesin yang "
         "muncul, lalu kirim ke saya untuk aktivasi (1 kunci = 1 PC)."
     )
