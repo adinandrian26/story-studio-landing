@@ -3,6 +3,11 @@ run-name: Kirim tautan Story Studio v2.0.2 ke WhatsApp penjual
 
 on:
   workflow_dispatch:
+    inputs:
+      message_id:
+        description: "Kosongkan untuk mengirim; isi ID pesan untuk memeriksa status tanpa mengirim ulang"
+        required: false
+        type: string
 
 concurrency:
   group: wa-tautan-penjual
@@ -27,6 +32,7 @@ jobs:
         env:
           FONNTE_TOKEN: ${{ secrets.FONNTE_TOKEN }}
           WA_PENJUAL: "6289634589191"
+          MESSAGE_ID: ${{ inputs.message_id }}
         run: |
           import json
           import os
@@ -65,15 +71,22 @@ jobs:
               'Ketiga unduhan sudah diverifikasi dan checksum cocok. '
               'Silakan teruskan tautan ZIP perbaikan beserta langkah di atas ke pembeli yang terkendala.'
           )
-          ok, body = fonnte_send(token, target, message)
-          if not ok:
-              sys.exit('Pengiriman ditolak Fonnte. Periksa koneksi perangkat atau kuota di dashboard Fonnte.')
-          response = json.loads(body)
+          existing = os.environ.get('MESSAGE_ID', '').strip()
+          if existing:
+              if not existing.isdecimal():
+                  sys.exit('ID pesan harus berupa angka.')
+              response = {'id': [existing], 'process': 'pending'}
+              print('Memeriksa pesan yang sudah dikirim; tidak mengirim ulang.')
+          else:
+              ok, body = fonnte_send(token, target, message)
+              if not ok:
+                  sys.exit('Pengiriman ditolak Fonnte. Periksa koneksi perangkat atau kuota di dashboard Fonnte.')
+              response = json.loads(body)
+              print('Fonnte menerima pesan untuk WhatsApp penjual.')
           ids = response.get('id', [])
           if not isinstance(ids, list):
               ids = [ids]
           ids = [str(value) for value in ids if value is not None and str(value)]
-          print('Fonnte menerima pesan untuk WhatsApp penjual.')
           print('Message IDs: ' + ', '.join(ids))
           final_status = str(response.get('process', 'accepted')).lower()
           for attempt in range(18):
@@ -89,6 +102,8 @@ jobs:
                   with urllib.request.urlopen(request, timeout=20) as result:
                       status = json.load(result)
                   if not status.get('status') or not status.get('message_status'):
+                      safe = {key: status[key] for key in ('status', 'reason', 'message_status') if key in status}
+                      print('Status response: ' + json.dumps(safe, ensure_ascii=False))
                       print('Pemeriksaan status belum tersedia; pesan sudah diterima Fonnte.')
                       break
                   final_status = str(status['message_status']).lower()
