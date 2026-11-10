@@ -74,6 +74,7 @@ TOOLS_PAGES = [
     (".github/workflows/acc-pembeli.yml", ".github/workflows/acc-pembeli.yml"),
     (".github/akses_tools/license_issuer.py", ".github/akses_tools/license_issuer.py"),
     (".github/workflows/aktivasi-lisensi.yml", ".github/workflows/aktivasi-lisensi.yml"),
+    (".github/workflows/cek-wa.yml", ".github/workflows/cek-wa.yml"),
     ("CNAME", "CNAME"),
 ]
 
