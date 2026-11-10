@@ -1,0 +1,47 @@
+name: Cek WA (status device Fonnte)
+
+# Diagnostik tanpa mengirim pesan: tanya Fonnte apakah device WhatsApp
+# yang ter-link masih CONNECT (kalau disconnect, semua pesan cuma "pending"
+# dan tidak pernah sampai). Jalankan dari HP: Actions -> Cek WA -> Run.
+# Hanya field aman yang dicetak (body mentah bisa memuat token device).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cek:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tanyakan status device ke Fonnte
+        env:
+          FONNTE_TOKEN: ${{ secrets.FONNTE_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request, urllib.error
+          if not os.environ.get("FONNTE_TOKEN"):
+              raise SystemExit("FONNTE_TOKEN belum diset.")
+          req = urllib.request.Request(
+              "https://api.fonnte.com/device",
+              headers={"Authorization": os.environ["FONNTE_TOKEN"]},
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  data = json.loads(r.read().decode("utf-8", "replace"))
+          except urllib.error.HTTPError as e:
+              # Body respons error JANGAN dicetak (bisa memuat token device).
+              print(f"HTTP {e.code} - endpoint device tidak tersedia.")
+              raise SystemExit(1)
+          for k in ("status", "device", "mode", "package", "expired", "subs", "pending"):
+              if k in data:
+                  print(f"{k} = {data[k]}")
+          st = data.get("status")
+          if st in (True, "true"):
+              print("KESIMPULAN: device Fonnte TERHUBUNG (messages yang pending harusnya mengalir).")
+          elif st in (False, "false", "disconnect"):
+              print("KESIMPULAN: device Fonnte DISCONNECT - buka console.fonnte.com, scan ulang QR.")
+          else:
+              print("KESIMPULAN: status tidak dikenal (lihat field di atas).")
+          PY
