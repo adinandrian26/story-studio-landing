@@ -190,7 +190,7 @@ def build_buyer_link(kode: str) -> str:
 
 
 def build_buyer_message(kode: str) -> str:
-    """Pesan WhatsApp siap kirim ke pembeli (kode + link + langkah aktivasi)."""
+    """Pesan WhatsApp siap kirim ke pembeli (kode + link + langkah aktivasi lisensi lewat WA)."""
     link = build_buyer_link(kode)
     return (
         "Terima kasih sudah membeli Story Studio! \U0001F389\n\n"
@@ -203,8 +203,14 @@ def build_buyer_message(kode: str) -> str:
         "Python 3.12 64-bit dipasang otomatis jika diperlukan; installer resminya sudah ikut.\n"
         "Tunggu pemasangan paket aplikasi selesai (perlu internet). Jangan tutup jendela hitam.\n"
         "Browser terbuka setelah server siap. Jika tidak terbuka, ketik http://127.0.0.1:8765 di Chrome/Edge.\n\n"
-        "Setelah terinstall: buka Aktivasi_Lisensi.bat, salin Kode Mesin yang "
-        "muncul, lalu kirim ke saya untuk aktivasi (1 kunci = 1 PC)."
+        "AKTIVASI LISENSI (1 kunci = 1 PC, lewat WA):\n"
+        "1. Setelah aplikasi terpasang: buka Aktivasi_Lisensi.bat di folder aplikasi, "
+        "salin Kode Mesin yang muncul.\n"
+        "2. Kirim Kode Mesin itu ke WA ini.\n"
+        "3. Saya terbitkan lisensi Anda langsung dari HP - token lisensi dibalas ke WA ini.\n"
+        "4. Salin token dari WA (paling gampang lewat WhatsApp Desktop/Web di PC), "
+        "tempel di kotak lisensi pada halaman aktivasi Story Studio di PC, "
+        'lalu klik "Aktifkan Studio".'
     )
 
 
