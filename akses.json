@@ -1,8 +1,8 @@
 {
-  "rev": 17,
+  "rev": 18,
   "links": {
     "installer": {
-      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.3/StoryStudio-Setup-2.0.3.zip"
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.4/StoryStudio-Setup-2.0.4.zip"
     },
     "tutorial_pemasangan": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/tutorial-pemasangan.mp4",
