@@ -25,6 +25,7 @@ jobs:
               raise SystemExit("FONNTE_TOKEN belum diset.")
           req = urllib.request.Request(
               "https://api.fonnte.com/device",
+              data=b"",  # info device = POST (GET ditolak 405)
               headers={"Authorization": os.environ["FONNTE_TOKEN"]},
           )
           try:
