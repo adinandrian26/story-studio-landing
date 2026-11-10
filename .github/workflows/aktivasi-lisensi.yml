@@ -1,0 +1,72 @@
+name: Terbitkan Lisensi
+
+# Terbitkan lisensi pembeli dari HP (pola ACC Pembeli):
+# buka github.com/adinandrian26/story-studio-landing/actions
+# -> pilih "Terbitkan Lisensi" -> Run workflow
+# -> isi Kode Mesin PC pembeli (dikirim pembeli via WA) + nama (+ WA pembeli) -> Run.
+# Token lisensi dikirim via WhatsApp (Fonnte) ke pembeli & salinan ke penjual.
+# Token tidak pernah muncul di log (repo publik). Kunci privat hanya di secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      kode_mesin:
+        description: "Kode mesin PC pembeli STSS-XXXXX-XXXXX-XXXXX-XXXXX (wajib)"
+        required: true
+        type: string
+      nama_pembeli:
+        description: "Nama pembeli (wajib)"
+        required: true
+        type: string
+      wa_pembeli:
+        description: "No WA pembeli 628... (kosongkan = hanya salinan ke penjual)"
+        required: false
+        type: string
+      plan:
+        description: "Plan lisensi"
+        required: false
+        type: choice
+        options:
+          - studio-1pc
+          - studio-pro
+          - studio-agency
+        default: studio-1pc
+      masa_hari:
+        description: "Masa berlaku hari (0 = permanen)"
+        required: false
+        type: string
+        default: "0"
+
+concurrency:
+  group: aktivasi-lisensi
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil repo
+        uses: actions/checkout@v4
+
+      - name: Siapkan Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Pasang cryptography
+        run: python -m pip install --quiet cryptography
+
+      - name: Terbitkan lisensi + kirim WA
+        env:
+          KODE_MESIN: ${{ inputs.kode_mesin }}
+          NAMA_PEMBELI: ${{ inputs.nama_pembeli }}
+          WA_PEMBELI: ${{ inputs.wa_pembeli }}
+          PLAN: ${{ inputs.plan }}
+          MASA_HARI: ${{ inputs.masa_hari }}
+          STUDIO_LICENSE_PRIVATE_KEY: ${{ secrets.STUDIO_LICENSE_PRIVATE_KEY }}
+          FONNTE_TOKEN: ${{ secrets.FONNTE_TOKEN }}
+          WA_PENJUAL: "6289634589191"
+        run: python .github/akses_tools/license_issuer.py
