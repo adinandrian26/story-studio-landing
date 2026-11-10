@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.2",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.2/StoryStudio-Update-2.0.2.zip",
-  "notes": "Perbaikan startup pembeli: Python 3.12 64-bit dipasang otomatis jika diperlukan, instalasi PyYAML tanpa compiler, serta pembuka Chrome/Edge langsung setelah server siap untuk mengatasi Application not found. Proyek dan lisensi tetap tersimpan.",
-  "date": "2026-11-09"
+  "latest": "2.0.3",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.3/StoryStudio-Update-2.0.3.zip",
+  "notes": "Naskah kini bercerita mengalir dari pembuka ke penutup tanpa membacakan daftar poin, plus pilihan engine suara VoxCPM2 (opsional, unduhan terpisah — tanpa engine aplikasi tetap memakai suara bawaan). Proyek dan lisensi tetap tersimpan.",
+  "date": "2026-11-10"
 }
