@@ -93,7 +93,8 @@ def build_license_message(token: str, payload: dict) -> str:
         f"Berlaku: {berlaku}\n"
         f"Kode mesin: {payload['machine']}\n\n"
         "CARA AKTIVASI (di PC yang sudah terinstall Story Studio):\n"
-        "1. Salin SELURUH teks token di bawah ini (satu baris penuh).\n"
+        "1. Salin SELURUH teks token di bawah ini (satu baris penuh) - "
+        "paling gampang lewat WhatsApp Desktop/Web di PC.\n"
         "2. Buka aplikasi Story Studio di PC - halaman aktivasi akan muncul.\n"
         '3. Tempel token ke kotak lisensi, lalu klik "Aktifkan Studio".\n\n'
         "TOKEN LISENSI:\n"
