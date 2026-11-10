@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.3",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.3/StoryStudio-Update-2.0.3.zip",
-  "notes": "Naskah kini bercerita mengalir dari pembuka ke penutup tanpa membacakan daftar poin, plus pilihan engine suara VoxCPM2 (opsional, unduhan terpisah — tanpa engine aplikasi tetap memakai suara bawaan). Proyek dan lisensi tetap tersimpan.",
-  "date": "2026-11-10"
+  "latest": "2.0.4",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.4/StoryStudio-Update-2.0.4.zip",
+  "notes": "Baru: pilihan bahasa naskah Indonesia/English untuk Mode Sutradara dan Autopilot (naskah, judul scene, dan judul YouTube otomatis mengikuti bahasa pilihan) serta Export CapCut sekali klik — semua materi langsung tersusun rapi di folder draft CapCut tanpa impor manual. Proyek dan lisensi tetap tersimpan.",
+  "date": "2026-11-11"
 }
