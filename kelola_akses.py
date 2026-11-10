@@ -65,12 +65,15 @@ TUTORIAL_FILES_PAGES = [
     "tutorial/tutorial-penggunaan.mp4",
 ]
 
-# File pendukung ACC-via-HP yang dipublish `deploy --tools` (sinkronkan tiap
-# kelola_akses.py / acc_runner.py / workflow berubah).
+# File pendukung ACC-via-HP & aktivasi-lisensi-via-HP yang dipublish
+# `deploy --tools` (sinkronkan tiap kelola_akses.py / acc_runner.py /
+# license_issuer.py / workflow berubah).
 TOOLS_PAGES = [
     ("kelola_akses.py", "kelola_akses.py"),
     (".github/akses_tools/acc_runner.py", ".github/akses_tools/acc_runner.py"),
     (".github/workflows/acc-pembeli.yml", ".github/workflows/acc-pembeli.yml"),
+    (".github/akses_tools/license_issuer.py", ".github/akses_tools/license_issuer.py"),
+    (".github/workflows/aktivasi-lisensi.yml", ".github/workflows/aktivasi-lisensi.yml"),
     ("CNAME", "CNAME"),
 ]
 
