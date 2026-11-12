@@ -163,10 +163,11 @@ def main() -> int:
     if not gist_id:
         print("ERROR: GIST_ID belum di-set di workflow.")
         return 1
-    # Wrapper fetch/put pakai GitHub REST via token Actions (urllib — tanpa gh).
+    # Wrapper fetch/put pakai GitHub REST via PAT gist (GITHUB_TOKEN Actions
+    # TIDAK punya akses gist = 403; pakai secret MOBILE_QUEUE_TOKEN).
     import urllib.request
 
-    token = os.environ.get("GH_TOKEN") or ""
+    token = os.environ.get("GIST_TOKEN") or os.environ.get("GH_TOKEN") or ""
     headers = {
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github+json",
