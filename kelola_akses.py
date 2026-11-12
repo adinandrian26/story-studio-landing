@@ -75,6 +75,8 @@ TOOLS_PAGES = [
     (".github/akses_tools/license_issuer.py", ".github/akses_tools/license_issuer.py"),
     (".github/workflows/aktivasi-lisensi.yml", ".github/workflows/aktivasi-lisensi.yml"),
     (".github/workflows/cek-wa.yml", ".github/workflows/cek-wa.yml"),
+    (".github/akses_tools/queue_film.py", ".github/akses_tools/queue_film.py"),
+    (".github/workflows/film-dari-hp.yml", ".github/workflows/film-dari-hp.yml"),
     ("CNAME", "CNAME"),
 ]
 
