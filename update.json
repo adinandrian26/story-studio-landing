@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.5",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.5/StoryStudio-Update-2.0.5.zip",
-  "notes": "Baru: 3 engine suara tambahan — Deepgram (suara natural, termasuk Bahasa Indonesia; isi kunci langsung di aplikasi, beberapa kunci sekaligus dan kuota habis otomatis pindah kunci berikutnya), Laras (TTS Indonesia lokal gratis dengan kloning suara dari rekaman 10-15 detik, jalankan server satu klik), dan VoxCPM Kaggle GPU yang kini ikut paket lengkap dengan panduan pemasangan di dalam aplikasi. Proyek dan lisensi tetap tersimpan.",
+  "latest": "2.0.6",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.6/StoryStudio-Update-2.0.6.zip",
+  "notes": "Baru: MODE FILM di Mode Sutradara — gaya A8 'Film - Alur Cerita': karakter set (pemeran) dibuat dulu (otomatis via AI: pemeran + gambar satu klik), naskah film 3 babak dengan adegan saling menyambung dan pemeran konsisten, lalu campuran adegan bergerak (video) dan adegan diam (gambar sinematik) seperti recap film. Semua alur lama tidak berubah. Proyek dan lisensi tetap tersimpan.",
   "date": "2026-11-12"
 }
