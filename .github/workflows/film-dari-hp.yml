@@ -47,6 +47,9 @@ jobs:
       - name: Masukkan ke antrean + WA konfirmasi
         env:
           GH_TOKEN: ${{ github.token }}
+          # Gist tidak bisa ditulis GITHUB_TOKEN (403) — pakai PAT pribadi
+          # ber-scope gist yang disimpan sebagai secret MOBILE_QUEUE_TOKEN.
+          GIST_TOKEN: ${{ secrets.MOBILE_QUEUE_TOKEN }}
           GIST_ID: "fa88cead8067c2e3c5a527d9d658583b"
           JUDUL: ${{ inputs.judul }}
           TEMA: ${{ inputs.tema }}
