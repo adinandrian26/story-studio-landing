@@ -124,9 +124,11 @@
 
     <div class="card unduh-card">
       <h2>⬇️ Unduh Aplikasi</h2>
+      <p class="sub" style="font-size:14px;margin-top:6px">Pilih sesuai komputer kamu — 1 kode akses berlaku untuk unduhan Windows &amp; Mac (lisensi tetap 1 kunci per perangkat).</p>
+
       <div class="btn" style="margin-top:16px;padding:0">
         <a id="linkInstaller" class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
-          Unduh Installer (.zip)
+          🪟 Unduh Installer Windows (.zip)
         </a>
       </div>
       <p class="file-line" id="installerLabel"></p>
@@ -135,6 +137,19 @@
         <li>Tunggu pemasangan paket aplikasi selesai (perlu internet). Chrome/Edge akan terbuka setelah server siap. Jika tidak terbuka, ketik <b>http://127.0.0.1:8765</b> di browser.</li>
         <li>Klik <b>Aktivasi_Lisensi.bat</b> → salin Kode Mesin → kirim ke penjual → tempel file lisensi yang diterima.</li>
       </ol>
+
+      <div class="btn" style="margin-top:24px;padding:0" id="wrapMac">
+        <a id="linkInstallerMac" class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+          🍎 Unduh Installer Mac (.zip)
+        </a>
+      </div>
+      <p class="file-line" id="installerMacLabel"></p>
+      <ol class="steps" id="stepsMac">
+        <li>Ekstrak <b>seluruh ZIP</b> ke satu folder (mis. Documents/StoryStudio). Butuh <b>Python 3.11+</b> — unduh dari <b>python.org/downloads</b> bila belum ada.</li>
+        <li>Buka <b>Terminal</b>, jalankan sekali: <code>cd "folder hasil ekstrak"</code> lalu <code>chmod +x start_studio.command</code> → setelah itu cukup double-click <b>start_studio.command</b>. Dependensi, Chromium otomatisasi, dan FFmpeg diunduh otomatis saat pertama (perlu internet).</li>
+        <li>Buka halaman aplikasi → salin <b>Kode Mesin</b> → kirim ke penjual (sebut <b>"Mac"</b>) → tempel token lisensi yang diterima. Kode Mesin Mac BERBEDA dari Windows — 1 kunci untuk 1 perangkat.</li>
+      </ol>
+      <p class="file-line" id="macNote">Panduan lengkap + solusi masalah: <b>BACA-DULU-MAC.html</b> di dalam paket.</p>
     </div>
 
     <h2 style="margin:34px 0 4px">🎬 Video Tutorial</h2>
@@ -246,6 +261,18 @@
       aIns.textContent = 'Link installer belum diatur';
       document.getElementById('installerLabel').textContent =
         'Hubungi penjual — manifest belum memuat link installer.';
+    }
+    var mac = linkOf(manifest, 'installer_mac');
+    var aMac = document.getElementById('linkInstallerMac');
+    var wrapMac = document.getElementById('wrapMac');
+    if (mac) {
+      aMac.href = mac.url;
+      document.getElementById('installerMacLabel').textContent =
+        mac.label || 'Installer macOS + panduan Mac di dalam paket.';
+    } else {
+      wrapMac.style.display = 'none';
+      document.getElementById('stepsMac').style.display = 'none';
+      document.getElementById('macNote').style.display = 'none';
     }
     pasangVideo('Pemasangan', linkOf(manifest, 'tutorial_pemasangan'));
     pasangVideo('Penggunaan', linkOf(manifest, 'tutorial_penggunaan'));
