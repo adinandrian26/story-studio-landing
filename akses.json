@@ -1,5 +1,5 @@
 {
-  "rev": 23,
+  "rev": 24,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.7/StoryStudio-Setup-2.0.7.zip",
@@ -38,6 +38,12 @@
       "nama": "Penjual - Perbaikan PyYAML",
       "dibuat": "2026-11-09",
       "catatan": "Perbaikan PyYAML 9 November 2026: installer terbaru memilih Python 3.11/3.12 x64, pip binary-only, pemulihan venv lama. Semua dependensi teruji pada Python 3.12.13 bersih. Kirim link dan instruksi Python 3.12 ke WA penjual."
+    },
+    {
+      "h": "346571ea22265122e28b13eafa579c0cc0e00b2945432d733ef464b3b18436e4",
+      "nama": "jyutaaa",
+      "dibuat": "2026-11-15",
+      "catatan": "pembeli baru 15 Nov 2026"
     }
   ]
 }
