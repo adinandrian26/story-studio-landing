@@ -1,5 +1,5 @@
 {
-  "rev": 24,
+  "rev": 25,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.7/StoryStudio-Setup-2.0.7.zip",
@@ -10,7 +10,7 @@
       "label": "Video Tutorial 1 — Pemasangan"
     },
     "tutorial_penggunaan": {
-      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/tutorial-penggunaan.mp4",
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.7/tutorial-penggunaan.mp4",
       "label": "Video Tutorial 2 — Cara Penggunaan"
     },
     "contoh_autopilot": {
