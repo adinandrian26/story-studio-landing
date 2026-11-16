@@ -75,8 +75,6 @@ TOOLS_PAGES = [
     (".github/akses_tools/license_issuer.py", ".github/akses_tools/license_issuer.py"),
     (".github/workflows/aktivasi-lisensi.yml", ".github/workflows/aktivasi-lisensi.yml"),
     (".github/workflows/cek-wa.yml", ".github/workflows/cek-wa.yml"),
-    (".github/akses_tools/queue_film.py", ".github/akses_tools/queue_film.py"),
-    (".github/workflows/film-dari-hp.yml", ".github/workflows/film-dari-hp.yml"),
     ("CNAME", "CNAME"),
 ]
 
@@ -418,6 +416,9 @@ def cmd_link(args) -> None:
     if args.installer:
         label = f"StoryStudio-Setup-{args.versi}.zip" if args.versi else ""
         pasangan.append(("installer", args.installer, label))
+    if args.installer_mac:
+        label_mac = f"StoryStudio-Setup-Mac-{args.versi}.zip" if args.versi else ""
+        pasangan.append(("installer_mac", args.installer_mac, label_mac))
     if args.pemasangan:
         pasangan.append(("tutorial_pemasangan", args.pemasangan, "Video Tutorial 1 — Pemasangan"))
     if args.penggunaan:
@@ -468,11 +469,150 @@ def cmd_deploy(args) -> None:
     print("Selesai. Cek langsung di browser (hard-refresh bila perlu).")
 
 
+def buka_gui_browser() -> None:
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    is_running = False
+    try:
+        s.settimeout(1.0)
+        s.connect(("127.0.0.1", 8799))
+        is_running = True
+        s.close()
+    except Exception:
+        pass
+
+    if not is_running:
+        print("Menjalankan server GUI di background...")
+        server_py = ROOT / "licensing" / "license_gui_server.py"
+        py_bin = sys.executable
+        if sys.platform == "win32":
+            pyw = Path(sys.executable).parent / "pythonw.exe"
+            if pyw.exists():
+                py_bin = str(pyw)
+        subprocess.Popen([py_bin, str(server_py)], cwd=str(ROOT))
+        import time
+        time.sleep(1.0)
+
+    print("Membuka browser ke http://127.0.0.1:8799/#cardAkses ...")
+    webbrowser.open("http://127.0.0.1:8799/#cardAkses")
+
+
+def interactive_menu() -> None:
+    try:
+        ensure_gh()
+    except GhError as e:
+        print(f"\n[PERINGATAN] {e}\n")
+
+    while True:
+        print()
+        print("=" * 64)
+        print("   STORY STUDIO — KELOLA KODE AKSES PEMBELI & TUTORIAL")
+        print("   Area Pembeli: https://bikinexplainer.online/akses.html")
+        print("=" * 64)
+        print(" [1] Buat Kode Akses Pembeli Baru (ACC Pembeli + Siapkan WA)")
+        print(" [2] Lihat Daftar Pembeli Aktif (List Grants)")
+        print(" [3] Cabut Kode Akses Pembeli")
+        print(" [4] Buka GUI Web di Browser (Aktivasi Lisensi & Akses)")
+        print(" [0] Keluar")
+        print("=" * 64)
+        try:
+            pilihan = input("Pilih menu [0-4]: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            break
+
+        if pilihan in ("0", "q", "exit", "keluar"):
+            print("Keluar.")
+            break
+
+        if pilihan == "1":
+            print("\n--- BUAT KODE AKSES BARU ---")
+            nama = input("Nama Pembeli: ").strip()
+            if not nama:
+                print("[!] Nama tidak boleh kosong.")
+                continue
+            wa = input("Nomor WA Pembeli (format 628..., kosongkan = self-chat): ").strip()
+            catatan = input("Catatan transaksi (opsional, mis. 'Transfer BCA'): ").strip()
+            class Args:
+                pass
+            a = Args()
+            a.nama = nama
+            a.wa = wa
+            a.catatan = catatan
+            a.tanpa_buka = False
+            try:
+                cmd_buat(a)
+            except GhError as e:
+                print(f"[GAGAL] {e}")
+            except Exception as e:
+                print(f"[Error] {e}")
+            try:
+                input("\nTekan Enter untuk kembali ke menu...")
+            except (EOFError, KeyboardInterrupt):
+                pass
+
+        elif pilihan == "2":
+            print("\n--- DAFTAR PEMBELI AKTIF ---")
+            class Args:
+                pass
+            try:
+                cmd_list(Args())
+            except GhError as e:
+                print(f"[GAGAL] {e}")
+            except Exception as e:
+                print(f"[Error] {e}")
+            try:
+                input("\nTekan Enter untuk kembali ke menu...")
+            except (EOFError, KeyboardInterrupt):
+                pass
+
+        elif pilihan == "3":
+            print("\n--- CABUT KODE AKSES ---")
+            kode = input("Masukkan kode yang mau dicabut (SS-XXXXX-XXXXX): ").strip()
+            if not kode:
+                print("[!] Kode tidak boleh kosong.")
+                continue
+            class Args:
+                pass
+            a = Args()
+            a.kode = kode
+            try:
+                cmd_cabut(a)
+            except GhError as e:
+                print(f"[GAGAL] {e}")
+            except Exception as e:
+                print(f"[Error] {e}")
+            try:
+                input("\nTekan Enter untuk kembali ke menu...")
+            except (EOFError, KeyboardInterrupt):
+                pass
+
+        elif pilihan == "4":
+            print("\n--- BUKA GUI WEB DI BROWSER ---")
+            buka_gui_browser()
+            try:
+                input("\nTekan Enter untuk kembali ke menu...")
+            except (EOFError, KeyboardInterrupt):
+                pass
+
+        else:
+            print("[!] Pilihan tidak valid. Silakan pilih 0-4.")
+
+
 def main() -> None:
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
+
+    if len(sys.argv) == 1:
+        interactive_menu()
+        if sys.platform == "win32":
+            try:
+                input("\nTekan Enter untuk menutup jendela...")
+            except (EOFError, KeyboardInterrupt):
+                pass
+        return
 
     ap = argparse.ArgumentParser(
         prog="kelola_akses.py",
@@ -495,7 +635,8 @@ def main() -> None:
     p.set_defaults(fn=cmd_list)
 
     p = sub.add_parser("link", help="Perbarui link installer/tutorial di manifest")
-    p.add_argument("--installer", help="URL asset installer di release")
+    p.add_argument("--installer", help="URL asset installer Windows di release")
+    p.add_argument("--installer-mac", help="URL asset installer macOS di release (dua-platform 2026-11-15)")
     p.add_argument("--pemasangan", help="URL MP4 tutorial pemasangan (release)")
     p.add_argument("--penggunaan", help="URL MP4 tutorial cara pakai (release)")
     p.add_argument("--contoh-autopilot", help="URL MP4 contoh hasil Mode Autopilot (release)")
