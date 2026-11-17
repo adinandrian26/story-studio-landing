@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.9",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.9/StoryStudio-Update-2.0.9.zip",
-  "notes": "Audio Paper-Cut diperbaiki total: suara narator sekarang benar-benar masuk video (sebelumnya hanya musik; suara narasi terbuang saat render). Musik disetel ulang jadi mood tenang ala dokumenter kampung (BPM 84) supaya narator dominan. Skill penulis baru KONON untuk gaya naskah Kisah Berhikmah di Paper-Cut (berlaku untuk Claude dan Gemini sekaligus, gaya tulis identik antar model): buka dengan kalimat aturan aneh, wajib 3+ detail sensorik objek fisik yang ikut bercerita, dua tokoh bernama (penjaga tua vs pendatang berkredensial), humor kering, klimaks fisik berirama, revelasi ilmiah satu kalimat, penutup tanpa ceramah. Semua alur lain tidak berubah. Proyek dan lisensi tetap tersimpan.",
+  "latest": "2.0.10",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.10/StoryStudio-Update-2.0.10.zip",
+  "notes": "Staging Paper-Cut mengikuti naskah (gaya konon): tiap adegan digambar beda rupa - latar diorama menyesuaikan set_name (jembatan gantung di atas air, bengkel, kantor/pos, sawah/ladang, bukit; senja/malam dengan bulan dan bintang), objek fokus adegan digambar besar (radio, gelas teh, peluit, api, tikar, buku, papan larangan, lentera), tokoh mengikuti narasi (dua tokoh berhadapan, regu berbaris, pose menunjuk/membawa/berjalan/duduk), dan kamera mengikuti camera_move naskah (zoom_in, push_in, zoom_out, pan_right, subtle_tilt). Skill KONON diperkuat agar Claude/Gemini menulis adegan yang bisa digambar persis. Semua alur lain tidak berubah. Proyek dan lisensi tetap tersimpan.",
   "date": "2026-11-18"
 }
