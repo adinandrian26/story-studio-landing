@@ -1,5 +1,5 @@
 {
-  "rev": 26,
+  "rev": 27,
   "links": {
     "installer": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.7/StoryStudio-Setup-2.0.7.zip",
@@ -50,6 +50,12 @@
       "nama": "Rizaldi",
       "dibuat": "2026-11-16",
       "catatan": "Pembeli baru 16 Nov 2026"
+    },
+    {
+      "h": "618545a2b32c3eb1e6f93376c55cdcc5fb74818733b057bb79f33b2b19ac4dd0",
+      "nama": "Abdul Awang",
+      "dibuat": "2026-11-18",
+      "catatan": "pembeli baru; pembeli tanpa WA, pesan diteruskan penjual"
     }
   ]
 }
