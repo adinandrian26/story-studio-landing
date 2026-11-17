@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.8",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.8/StoryStudio-Update-2.0.8.zip",
-  "notes": "Paper-Cut Studio visual baru total: diorama kertas premium (bukit berlapis berbayangan, matahari, awan, properti kertas mengikuti isi adegan, karakter puppet lengkap, pita judul sobek, vignette) dan video kini bergerak dengan kamera push-in per adegan. Gaya naskah baru di Paper-Cut: Kisah Berhikmah (praktik aneh - dilarang - konsekuensi - revelasi ilmiah - penebusan). Pilihan durasi baru 30 detik s/d 13 menit, jumlah adegan otomatis menyesuaikan. Pool Multi-Akun: tombol Sinkron Otomatis dari Chrome (semua akun Gemini/Claude yang login di Chrome masuk pool sekali klik). Perbaikan: tombol Test/Reset akun AI dan halaman Paper-Cut yang gagal, caption kecil, tata letak header. Semua alur lama tidak berubah. Proyek dan lisensi tetap tersimpan.",
+  "latest": "2.0.9",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.9/StoryStudio-Update-2.0.9.zip",
+  "notes": "Audio Paper-Cut diperbaiki total: suara narator sekarang benar-benar masuk video (sebelumnya hanya musik; suara narasi terbuang saat render). Musik disetel ulang jadi mood tenang ala dokumenter kampung (BPM 84) supaya narator dominan. Skill penulis baru KONON untuk gaya naskah Kisah Berhikmah di Paper-Cut (berlaku untuk Claude dan Gemini sekaligus, gaya tulis identik antar model): buka dengan kalimat aturan aneh, wajib 3+ detail sensorik objek fisik yang ikut bercerita, dua tokoh bernama (penjaga tua vs pendatang berkredensial), humor kering, klimaks fisik berirama, revelasi ilmiah satu kalimat, penutup tanpa ceramah. Semua alur lain tidak berubah. Proyek dan lisensi tetap tersimpan.",
   "date": "2026-11-18"
 }
