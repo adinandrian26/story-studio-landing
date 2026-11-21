@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.11",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.11/StoryStudio-Update-2.0.11.zip",
-  "notes": "Perbaikan Paper-Cut Studio mengikuti gaya konon: kamera kini DIAM per potongan - tidak ada zoom dan tidak ada geser yang membuat video terasa gusar geser; dinamika datang dari potongan sudut (wide - close-up - detail), animasi karakter, dan pop caption. Suara Paper-Cut kini memakai semua model suara Story Studio (Edge-TTS, Deepgram, VoxCPM2, Laras, Kokoro) dan subtitel karaoke mengikuti suara ASLI per kata (bukan estimasi) - narasi tidak lagi jatuh ke audio robotik hanya karena internet lambat. Naskah Paper-Cut lebih tahan gangguan: balasan web yang gagal di-parse dicatat otomatis sebelum fallback. Semua alur lain tidak berubah. Proyek dan lisensi tetap tersimpan.",
-  "date": "2026-11-19"
+  "latest": "2.0.12",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.12/StoryStudio-Update-2.0.12.zip",
+  "notes": "Pembaruan besar Video Recap + Paper-Cut dan 2 engine suara baru. VIDEO RECAP: gambar diam tidak lagi bergetar (zoom-out halus anti-jitter); klip kini dipilih dari ADEGAN SERU film (bukan tersebar paksa) dengan slider 'Fokus ke Adegan Seru'; kepala hitam & kredit film otomatis dibuang dari analisis, contact sheet, dan beat — bisa dikoreksi manual di UI; zona adegan seru memakai lebih banyak gambar; opening pendek & pembuang beat sunyi. PAPER-CUT: alur baru 'Cartoon Short' 6 tahap dengan persetujuan per tahap (Riset fakta -> Naskah -> Voiceover -> Shot plan -> Stills -> Render final) — kredit/layar hitam tak pernah jadi klip, gambar per adegan bisa direview sebelum render. ENGINE SUARA BARU di semua fitur: ElevenLabs (multilingual, 29+ bahasa incl. Indonesia) dan Lumenon (lumenon.ai, 1000+ suara) — kunci diisi di Pengaturan > TTS & API Key, tanpa kunci otomatis kembali ke Edge-TTS. Naskah Recap fallback lokal kini mendukung pilihan bahasa Inggris. Proyek dan lisensi tetap tersimpan aman.",
+  "date": "2026-11-22"
 }
