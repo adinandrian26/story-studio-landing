@@ -1,9 +1,9 @@
 {
-  "rev": 33,
+  "rev": 35,
   "links": {
     "installer": {
-      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.13/StoryStudio-Setup-2.0.13.zip",
-      "label": "StoryStudio-Setup-2.0.13.zip"
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.14/StoryStudio-Setup-2.0.14.zip",
+      "label": "StoryStudio-Setup-2.0.14.zip"
     },
     "tutorial_pemasangan": {
       "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.1/tutorial-pemasangan.mp4",
@@ -22,8 +22,8 @@
       "label": "Contoh Hasil — Mode Sutradara"
     },
     "installer_mac": {
-      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.13/StoryStudio-Setup-Mac-2.0.13.zip",
-      "label": "StoryStudio-Setup-Mac-2.0.13.zip"
+      "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.14/StoryStudio-Setup-Mac-2.0.14.zip",
+      "label": "StoryStudio-Setup-Mac-2.0.14.zip"
     }
   },
   "grants": [
