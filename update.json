@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.13",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.13/StoryStudio-Update-2.0.13.zip",
-  "notes": "Pembaruan besar Drama & Motion Comic Studio + Paper-Cut Cartoon Shorts. DRAMA & MOTION COMIC STUDIO: alur produksi 7 tahap berbasis zenstory-ai/drama-skills; pipeline 1-klik tahap 1-5 otomatis; Reference Sheet Karakter/Lokasi/Prop untuk konsistensi visual; auto-retry keyframe 3x; tata bahasa kamera sinematik (lensa 24-100mm, pencahayaan filmis); export ZIP proyek lengkap; render MP4 16:9 & 9:16 + draft CapCut; generator teks sumber AI dari judul. PAPERCUT STUDIO: mesin Three.js WebGL2 + postprocessing InkPass/LensBlur/Bloom + 30 model cerita. Normalisasi WebP ke PNG otomatis, manajemen task latar belakang anti-tabrakan. Proyek dan lisensi tetap tersimpan aman.",
-  "date": "2026-11-24"
+  "latest": "2.0.14",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.14/StoryStudio-Update-2.0.14.zip",
+  "notes": "GEO MAP STUDIO BARU (100% Geo Kit — Creator & MVP: Caesar @caesarscales, MIT License) + Perbaikan Voice Multi-Provider. Alur 5 tahap map-explainer Shorts 1080x1920 30fps: Idea misteri peta -> Script formula STUDY.md §2 -> Voice 1-take dgn timestamp per kata (ElevenLabs /with-timestamps, Upload rekaman, dan Suara Studio Edge-TTS/Deepgram/Lumenon) -> Build kamera mulus di peta 8192px + Chibi Clay 3D Three.js r170 + mix audio -16 LUFS -> Style & Camera QA Gate 13 metrik + Export ZIP/CapCut. Termasuk perbaikan integrasi TTSEngine & routing suara Deepgram di Geo Map Studio. Proyek & lisensi tetap aman.",
+  "date": "2026-11-25"
 }
