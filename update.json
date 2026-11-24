@@ -1,6 +1,6 @@
 {
-  "latest": "2.0.12",
-  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.12/StoryStudio-Update-2.0.12.zip",
-  "notes": "Pembaruan besar Video Recap + Paper-Cut dan 2 engine suara baru. VIDEO RECAP: gambar diam tidak lagi bergetar (zoom-out halus anti-jitter); klip kini dipilih dari ADEGAN SERU film (bukan tersebar paksa) dengan slider 'Fokus ke Adegan Seru'; kepala hitam & kredit film otomatis dibuang dari analisis, contact sheet, dan beat — bisa dikoreksi manual di UI; zona adegan seru memakai lebih banyak gambar; opening pendek & pembuang beat sunyi. PAPER-CUT: alur baru 'Cartoon Short' 6 tahap dengan persetujuan per tahap (Riset fakta -> Naskah -> Voiceover -> Shot plan -> Stills -> Render final) — kredit/layar hitam tak pernah jadi klip, gambar per adegan bisa direview sebelum render. ENGINE SUARA BARU di semua fitur: ElevenLabs (multilingual, 29+ bahasa incl. Indonesia) dan Lumenon (lumenon.ai, 1000+ suara) — kunci diisi di Pengaturan > TTS & API Key, tanpa kunci otomatis kembali ke Edge-TTS. Naskah Recap fallback lokal kini mendukung pilihan bahasa Inggris. Proyek dan lisensi tetap tersimpan aman.",
-  "date": "2026-11-22"
+  "latest": "2.0.13",
+  "url": "https://github.com/adinandrian26/story-studio-landing/releases/download/v2.0.13/StoryStudio-Update-2.0.13.zip",
+  "notes": "Pembaruan besar Drama & Motion Comic Studio + Paper-Cut Cartoon Shorts. DRAMA & MOTION COMIC STUDIO: alur produksi 7 tahap berbasis zenstory-ai/drama-skills; pipeline 1-klik tahap 1-5 otomatis; Reference Sheet Karakter/Lokasi/Prop untuk konsistensi visual; auto-retry keyframe 3x; tata bahasa kamera sinematik (lensa 24-100mm, pencahayaan filmis); export ZIP proyek lengkap; render MP4 16:9 & 9:16 + draft CapCut; generator teks sumber AI dari judul. PAPERCUT STUDIO: mesin Three.js WebGL2 + postprocessing InkPass/LensBlur/Bloom + 30 model cerita. Normalisasi WebP ke PNG otomatis, manajemen task latar belakang anti-tabrakan. Proyek dan lisensi tetap tersimpan aman.",
+  "date": "2026-11-24"
 }
